@@ -36,7 +36,6 @@ A `render.yaml` Blueprint is included to define the Render services. The Atlas c
 - Render's free Key Value service has no disk persistence. The MongoDB outbox remains the source of truth and the worker re-publishes stale unprocessed events, but use a persistent Key Value plan for stronger queue durability at higher traffic.
 
 ## Deploy online with MongoDB Atlas + Render
-
 ### A. Create MongoDB Atlas
 
 1. Create an Atlas project and a cluster. Choose a region close to your Render region; this setup uses Singapore as the default Render region.
@@ -52,8 +51,8 @@ A `render.yaml` Blueprint is included to define the Render services. The Atlas c
 
 ### B. Deploy the Render Blueprint
 
-1. Push the **contents** of this `LinkPulse_MVP` folder to a GitHub repository (so `render.yaml` is in the repository root).
-2. In Render, choose **New → Blueprint**, connect the repository, and apply `render.yaml`.
+1. Pushs the **contents** of this `LinkPulse_MVP` folder to a GitHub repository (so `render.yaml` is in the repository root).
+2. In Render, choose the  **New → Blueprint**, connect the repository, and apply `render.yaml`.
 3. When prompted, provide `MONGODB_URI` using the Atlas application connection string.
 4. The Blueprint defines the API web service, frontend static site, background worker and a Redis-compatible Render Key Value queue. The API/worker use Atlas; no MongoDB container is deployed. Service environment variables reference Render-assigned public URLs rather than assuming a fixed API hostname.
 5. Ensure the API and worker run in the same Render region as the Key Value service. The provided Blueprint sets Singapore.
